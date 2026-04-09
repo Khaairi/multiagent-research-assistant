@@ -1,0 +1,9 @@
+/.venv
+/.adk
+/research_agent/.adk
+/research_agent/__pycache__
+/research_agent/agents/__pycache__
+/research_agent/database/__pycache__
+/research_agent/tools/__pycache__
+research_results.db
+.env
