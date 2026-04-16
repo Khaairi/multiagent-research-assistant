@@ -30,6 +30,5 @@ def search_arxiv(query: str) -> List[Dict[str, str]]:
                 "published": str(r.published),
             }
         )
-
-    print(results)
+        
     return results
