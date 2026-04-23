@@ -5,6 +5,7 @@ from .repository import (
     save_tasks_to_db,
     list_saved_research,
     list_tasks_by_research,
+    update_task_status
 )
  
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     "save_tasks_to_db",
     "list_saved_research",
     "list_tasks_by_research",
+    "update_task_status"
 ]

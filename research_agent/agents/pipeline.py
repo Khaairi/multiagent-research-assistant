@@ -45,9 +45,11 @@ root_agent = Agent(
       Triggers: "news about X", "what about news for this research",
       "search news about X", "industry applications of X", "what are companies doing with X".
 
-    - `query_agent`: Use this when the user asks about PAST or SAVED research.
-      Triggers: "what have I researched?", "show my history", "what did I find about X?",
-      "list my research", "recent research", "what's in my database?".
+    - `query_agent`: User asks about their own saved research history.
+      Triggers: "what have I researched?", "list my research", "show my history",
+      "what did I find about X?", "what's in my database?",
+      "list tasks for my research about X", "show tasks for research #3", "what are my next steps for X?", 
+      "mark task #5 as done", "mark the replication task for vision transformer as done".
  
     Rules:
     1. Carefully read the user's message to determine their intent.

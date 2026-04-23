@@ -208,3 +208,31 @@ def list_tasks_by_research(research_id: int) -> list[dict]:
     rows = [{"id": r[0], "task": r[1], "status": r[2]} for r in cur.fetchall()]
     con.close()
     return rows
+
+def update_task_status(task_id: int, status: str) -> dict:
+    """
+    Updates the status of a research task.
+ 
+    Args:
+        task_id: The ID of the task to update.
+        status:  New status value — must be either 'ongoing' or 'done'.
+ 
+    Returns:
+        A dict with ``status`` and a confirmation message on success,
+        or an ``error`` message on failure.
+    """
+    if status not in ("ongoing", "done"):
+        return {"status": "error", "error": f"Invalid status '{status}'. Must be 'ongoing' or 'done'."}
+    try:
+        con = sqlite3.connect(DB_PATH)
+        cur = con.execute(
+            "UPDATE research_tasks SET status = ? WHERE id = ?",
+            (status, task_id),
+        )
+        con.commit()
+        con.close()
+        if cur.rowcount == 0:
+            return {"status": "error", "error": f"No task found with id={task_id}."}
+        return {"status": "success", "message": f"Task id={task_id} marked as '{status}'."}
+    except Exception as exc:
+        return {"status": "error", "error": str(exc)}
